@@ -9,6 +9,13 @@
     "homeTimezone": "Europe/Moscow"
   },
 
+  "avatar": {
+    "_help": "Пиксельный спрайт и кадр моргания (закрытые глаза). Пока файлов нет — показывается силуэт. pixelated: false — для не-пиксельной картинки.",
+    "image": "assets/avatar.png",
+    "blink": "assets/avatar-blink.png",
+    "pixelated": true
+  },
+
   "live": {
     "_help": "Проверка «В ЭФИРЕ». endpoint пустой — спрашиваем публичный DecAPI. Свой сервер (Cloudflare Worker) — см. README; {channel} заменяется на ник.",
     "endpoint": "",

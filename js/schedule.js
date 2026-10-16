@@ -121,7 +121,7 @@
     el.textContent = Z.t('statusWait');
     if (st.kind === 'debut' || st.kind === 'next' || st.kind === 'window') {
       const n = document.createElement('span'); n.className = 'next';
-      n.textContent = ` · ${Z.t('statusNext')} ${localWhen(st.at)}`;
+      n.textContent = `${Z.t('statusNext')} ${localWhen(st.at)}`;
       el.appendChild(n);
     }
   };

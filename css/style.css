@@ -48,7 +48,7 @@ a { color: var(--hi); }
   font: 18px/1 var(--font-osd); letter-spacing: 1px; color: var(--dim); background: transparent;
   border: 0; padding: 6px 10px; min-width: 44px; min-height: 36px; cursor: pointer;
 }
-.lang button.on { color: var(--bg); background: var(--fg); }
+.lang button[aria-pressed="true"] { color: var(--bg); background: var(--fg); }
 .brand { display: flex; align-items: center; justify-content: center; gap: 12px; }
 .sym { width: 46px; height: 46px; filter: drop-shadow(0 0 6px rgba(51,255,102,.7)); cursor: pointer; }
 h1 { margin: 0; font: 64px/1 var(--font-osd); letter-spacing: 4px; text-shadow: var(--glow); }
@@ -57,7 +57,8 @@ h1 { margin: 0; font: 64px/1 var(--font-osd); letter-spacing: 4px; text-shadow: 
 .status.live i { font-style: normal; color: var(--err); text-shadow: 0 0 8px var(--err); animation: blink 1s steps(1) infinite; }
 .status.live a { margin-left: .4em; }
 .status.wait { color: var(--dim); }
-.status .next { white-space: nowrap; }
+.status .next { display: block; font-size: 17px; }   /* «ближайший сеанс: …» — отдельной строкой, чтобы влезало в 360 px */
+.status .next .dot { display: none; }
 @keyframes blink { 50% { opacity: .15; } }
 
 /* ================== 2. АВАТАР ================== */
@@ -69,6 +70,29 @@ h1 { margin: 0; font: 64px/1 var(--font-osd); letter-spacing: 4px; text-shadow: 
 .cam-view { position: relative; aspect-ratio: 1; display: grid; place-items: center;
   background: radial-gradient(ellipse at center, rgba(51,255,102,.08), transparent 70%); }
 .avatar-ph { width: 62%; color: rgba(51,255,102,.35); }
+.avatar-ph .eye { transform-box: fill-box; transform-origin: center; }
+.avatar-ph.blinking .eye { transform: scaleY(.2); }
+/* спрайт: два кадра друг на друге, пиксели не размываются */
+.sprite { position: absolute; inset: 6%; width: 88%; height: 88%; object-fit: contain; image-rendering: pixelated; user-select: none; }
+.smooth .sprite { image-rendering: auto; }
+.sprite.blink { visibility: hidden; }
+.sprite.blink.on { visibility: visible; }
+/* фиолетовый глитч ЭХО: сдвиг, разнос цветов, полосы и вспышка (~0.5 сек) */
+.cam-view.glitch { animation: camGlitch .5s steps(1); }
+.cam-view.glitch > .sprite, .cam-view.glitch > .avatar-ph { animation: spriteGlitch .5s steps(1); }
+.cam-view::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background: repeating-linear-gradient(to bottom, rgba(155,92,255,.0) 0 6px, rgba(155,92,255,.45) 6px 9px), radial-gradient(ellipse, rgba(155,92,255,.35), transparent 70%); }
+.cam-view.glitch::after { animation: camFlash .5s steps(1); }
+@keyframes camGlitch { 0%, 100% { filter: none; } 20% { filter: hue-rotate(40deg) saturate(1.6); } 60% { filter: none; } 80% { filter: hue-rotate(-30deg); } }
+@keyframes spriteGlitch {
+  0%   { transform: translate(-6px, 0) skewX(-8deg); filter: drop-shadow(-4px 0 #ff2a7a) drop-shadow(4px 0 #2ad4ff); }
+  20%  { transform: translate(5px, 2px); filter: drop-shadow(0 0 10px #9b5cff) drop-shadow(3px 0 #9b5cff); clip-path: inset(20% 0 35% 0); }
+  40%  { transform: translate(-3px, -1px); filter: drop-shadow(-3px 0 #9b5cff); clip-path: none; }
+  60%  { transform: translate(8px, 0) skewX(10deg); filter: drop-shadow(5px 0 #ff2a7a) drop-shadow(-5px 0 #2ad4ff); clip-path: inset(55% 0 10% 0); }
+  80%  { transform: none; filter: drop-shadow(0 0 6px #9b5cff); clip-path: none; }
+  100% { transform: none; filter: none; }
+}
+@keyframes camFlash { 0% { opacity: .9; } 30% { opacity: .2; } 50% { opacity: .7; } 80%, 100% { opacity: 0; } }
 
 /* ================== 3. КТО ЭТО ================== */
 .about { margin: 22px 0 6px; color: var(--hi); font-size: 19px; text-shadow: 0 0 8px rgba(157,255,176,.25); }
