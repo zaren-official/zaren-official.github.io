@@ -9,6 +9,12 @@
     "homeTimezone": "Europe/Moscow"
   },
 
+  "live": {
+    "_help": "Проверка «В ЭФИРЕ». endpoint пустой — спрашиваем публичный DecAPI. Свой сервер (Cloudflare Worker) — см. README; {channel} заменяется на ник.",
+    "endpoint": "",
+    "intervalSec": 120
+  },
+
   "blocks": {
     "avatar": true,
     "about": true,
