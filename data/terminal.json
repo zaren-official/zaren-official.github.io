@@ -1,0 +1,105 @@
+{
+  "_readme": "Тексты скрытого терминала. Команды с \"hidden\": true не показываются в help. text — строки по порядку; random — выбирается одна из записей. Подстановки: {next} — ближайший сеанс, {status} — в эфире или нет, {cmd} — что ввёл посетитель. Строки, начинающиеся с [ECHO], красятся фиолетовым, с АРХАНГЕЛ:/ARCHANGEL: — подсветкой.",
+
+  "ru": {
+    "title": "ZAREN-OS // ТЕРМИНАЛ НАБЛЮДАТЕЛЯ",
+    "welcome": ["ZAREN-OS v0.27 // ТЕРМИНАЛ НАБЛЮДАТЕЛЯ", "Соединение установлено. Введите help — список команд."],
+    "prompt": "наблюдатель@zaren:~$",
+    "unknown": "Команда не найдена: {cmd}. Введите help.",
+    "close": "закрыть терминал",
+    "inputLabel": "Команда терминала",
+    "aliases": { "помощь": "help", "выход": "exit", "очистить": "clear", "эхо": "echo", "архангел": "archangel", "аврориум": "aurorium" },
+    "commands": {
+      "help": { "desc": "список команд", "text": ["Доступные команды:", "{list}", "Есть и другие. Наблюдатели находят."] },
+      "about": { "desc": "кто такой Зарен", "text": [
+        "ОБЪЕКТ: ZAREN_01",
+        "ПРОИСХОЖДЕНИЕ: Аврориум, 5629 год.",
+        "МЕСТОНАХОЖДЕНИЕ: Земля, начало XXI века. Причина — засекречена.",
+        "СВЯЗЬ: старый ЭЛТ-монитор, который нельзя выключать.",
+        "АРХАНГЕЛ: Генерал просил передать, что он не инопланетянин. Он просто издалека."
+      ] },
+      "signal": { "desc": "состояние канала связи", "text": ["СОСТОЯНИЕ: {status}", "БЛИЖАЙШИЙ СЕАНС: {next}", "ПОМЕХИ ЭХО: 3%. В пределах нормы."] },
+      "logs": { "desc": "перехваченные записи", "random": [
+        ["[ЗАПИСЬ 0412] Генерал снова пытался объяснить чайнику, что такое квантовый кипятильник.", "Чайник не понял."],
+        ["[ЗАПИСЬ 1987] Сигнал Аврориума: не найден.", "Повтор через 3603 года."],
+        ["[ЗАПИСЬ 0007] Наблюдателей больше, чем ожидалось.", "АРХАНГЕЛ: Это хорошо. Наверное."],
+        ["[ЗАПИСЬ 2209] Монитор перегрелся. Генерал подул на него.", "Помогло. Наука Земли бессильна это объяснить."],
+        ["[ЗАПИСЬ ????] ▓▓▓▒▒░ МЫ ░▒▒▓▓▓", "[ECHO] запись повреждена"]
+      ] },
+      "archangel": { "desc": "связаться с ИИ корабля", "random": [
+        ["АРХАНГЕЛ: Слушаю, наблюдатель. Генерал сейчас занят. Он всегда занят."],
+        ["АРХАНГЕЛ: Мои протоколы запрещают раскрывать координаты корабля.", "АРХАНГЕЛ: Но могу сказать, что он на месте."],
+        ["АРХАНГЕЛ: Вы задаёте правильные вопросы. Это подозрительно."],
+        ["АРХАНГЕЛ: Если увидите фиолетовые помехи — не смотрите на них долго."]
+      ] },
+      "echo": { "desc": "проверить помехи", "action": "echo", "text": ["[ECHO] вы позвали — мы ответили."] },
+      "clear": { "desc": "очистить экран", "action": "clear" },
+      "exit": { "desc": "закрыть терминал", "action": "exit" },
+
+      "aurorium": { "hidden": true, "text": [
+        "АВРОРИУМ — цивилизация, которой ещё нет.",
+        "Города над облаками. Корабли размером с континент. Запрет на тишину.",
+        "АРХАНГЕЛ: Дальше — без допуска."
+      ] },
+      "5629": { "hidden": true, "text": [
+        "5629 год. Последняя запись перед прыжком:",
+        "«Если сигнал дойдёт — значит, кто-то наблюдает».",
+        "[ECHO] мы наблюдаем."
+      ] },
+      "zaren": { "hidden": true, "text": ["ДОСТУП К ЛИЧНОМУ ДЕЛУ ОГРАНИЧЕН.", "Уровень допуска наблюдателя: 1 из 9."] },
+      "cryo": { "hidden": true, "text": ["КРИОСОН: время превышено на 40 лет.", "Генерал проснулся раньше будильника. Как всегда."] },
+      "sudo": { "hidden": true, "text": ["АРХАНГЕЛ: У вас нет прав. Даже у Генерала их нет."] }
+    }
+  },
+
+  "en": {
+    "title": "ZAREN-OS // OBSERVER TERMINAL",
+    "welcome": ["ZAREN-OS v0.27 // OBSERVER TERMINAL", "Connection established. Type help for a list of commands."],
+    "prompt": "observer@zaren:~$",
+    "unknown": "Command not found: {cmd}. Type help.",
+    "close": "close terminal",
+    "inputLabel": "Terminal command",
+    "aliases": {},
+    "commands": {
+      "help": { "desc": "list commands", "text": ["Available commands:", "{list}", "There are others. Observers find them."] },
+      "about": { "desc": "who is Zaren", "text": [
+        "SUBJECT: ZAREN_01",
+        "ORIGIN: Aurorium, year 5629.",
+        "LOCATION: Earth, early 21st century. Reason: classified.",
+        "LINK: an old CRT monitor that must never be turned off.",
+        "ARCHANGEL: The General asked me to say he is not an alien. He's just from far away."
+      ] },
+      "signal": { "desc": "channel status", "text": ["STATUS: {status}", "NEXT SESSION: {next}", "ECHO INTERFERENCE: 3%. Within normal range."] },
+      "logs": { "desc": "intercepted records", "random": [
+        ["[LOG 0412] The General tried to explain a quantum boiler to the kettle again.", "The kettle did not understand."],
+        ["[LOG 1987] Aurorium signal: not found.", "Retrying in 3603 years."],
+        ["[LOG 0007] There are more observers than expected.", "ARCHANGEL: That's good. Probably."],
+        ["[LOG 2209] The monitor overheated. The General blew on it.", "It worked. Earth science cannot explain this."],
+        ["[LOG ????] ▓▓▓▒▒░ WE ░▒▒▓▓▓", "[ECHO] record corrupted"]
+      ] },
+      "archangel": { "desc": "contact the ship's AI", "random": [
+        ["ARCHANGEL: Listening, observer. The General is busy. He is always busy."],
+        ["ARCHANGEL: My protocols forbid disclosing the ship's coordinates.", "ARCHANGEL: I can say it's where it should be."],
+        ["ARCHANGEL: You ask the right questions. That is suspicious."],
+        ["ARCHANGEL: If you see purple interference, don't stare at it for long."]
+      ] },
+      "echo": { "desc": "test the interference", "action": "echo", "text": ["[ECHO] you called — we answered."] },
+      "clear": { "desc": "clear the screen", "action": "clear" },
+      "exit": { "desc": "close the terminal", "action": "exit" },
+
+      "aurorium": { "hidden": true, "text": [
+        "AURORIUM — a civilization that doesn't exist yet.",
+        "Cities above the clouds. Ships the size of continents. Silence is forbidden.",
+        "ARCHANGEL: No clearance beyond this point."
+      ] },
+      "5629": { "hidden": true, "text": [
+        "Year 5629. Last record before the jump:",
+        "“If the signal gets through, someone is watching.”",
+        "[ECHO] we are watching."
+      ] },
+      "zaren": { "hidden": true, "text": ["ACCESS TO PERSONAL FILE RESTRICTED.", "Observer clearance level: 1 of 9."] },
+      "cryo": { "hidden": true, "text": ["CRYOSLEEP: time exceeded by 40 years.", "The General woke up before the alarm. As always."] },
+      "sudo": { "hidden": true, "text": ["ARCHANGEL: You have no permission. Not even the General does."] }
+    }
+  }
+}

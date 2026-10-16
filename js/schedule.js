@@ -126,7 +126,13 @@
     }
   };
 
-  Z.schedule = { state, occurrences };
+  // для терминала: «пт, 20:00» ближайшего сеанса (или дебюта)
+  function nextText() {
+    const st = state();
+    const at = st.kind === 'window' ? (Z.live && Z.live.checked && !Z.live.live ? st.nextAt : st.at) : st.at;
+    return at ? localWhen(at) : '—';
+  }
+  Z.schedule = { state, occurrences, nextText };
 
   function renderAll() { renderTable(); renderTimer(); Z.renderStatus(); }
   function init() {
