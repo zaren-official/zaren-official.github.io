@@ -1,0 +1,99 @@
+{
+  "_readme": "Всё, что меняется на сайте, — здесь. Ссылки, ники, расписание, дата дебюта, тексты (ru/en), какие блоки показывать. Подробно — в README.md.",
+
+  "site": {
+    "name": "ZAREN_01",
+    "email": "hello@example.com",
+    "sourceUrl": "#",
+    "twitchChannel": "zaren",
+    "homeTimezone": "Europe/Moscow"
+  },
+
+  "blocks": {
+    "avatar": true,
+    "about": true,
+    "links": true,
+    "schedule": true,
+    "timer": true,
+    "liveStatus": true,
+    "terminal": true
+  },
+
+  "links": [
+    { "id": "twitch",         "enabled": true,  "url": "#", "icon": "twitch",   "title": "Twitch",            "label": { "ru": "эфиры",                        "en": "live streams" } },
+    { "id": "youtube",        "enabled": true,  "url": "#", "icon": "youtube",  "title": "YouTube",           "label": { "ru": "записи и нарезки",             "en": "VODs and clips" } },
+    { "id": "tiktok",         "enabled": true,  "url": "#", "icon": "tiktok",   "title": "TikTok",            "label": { "ru": "короткие передачи",            "en": "short transmissions" } },
+    { "id": "telegram",       "enabled": true,  "url": "#", "icon": "telegram", "title": "Telegram",          "label": { "ru": "канал: новости и анонсы",      "en": "channel: news and announcements" } },
+    { "id": "discord",        "enabled": false, "url": "#", "icon": "discord",  "title": "Discord",           "label": { "ru": "штаб наблюдателей",            "en": "observers' HQ" } },
+    { "id": "donationalerts", "enabled": true,  "url": "#", "icon": "donate",   "title": "DonationAlerts",    "label": { "ru": "поддержать сигнал",            "en": "boost the signal" } },
+    { "id": "boosty",         "enabled": false, "url": "#", "icon": "boosty",   "title": "Boosty",            "label": { "ru": "закрытый канал связи",         "en": "private channel" } },
+    { "id": "votv",           "enabled": false, "url": "#", "icon": "antenna",  "title": "Voices of the Void", "label": { "ru": "мод: события из чата в игре", "en": "mod: chat events in the game" } }
+  ],
+
+  "schedule": {
+    "_help": "day: 1 — понедельник … 7 — воскресенье. time — по homeTimezone (МСК). note — подпись (можно пустую).",
+    "streams": [
+      { "day": 1, "time": "20:00", "note": { "ru": "", "en": "" } },
+      { "day": 3, "time": "20:00", "note": { "ru": "", "en": "" } },
+      { "day": 5, "time": "20:00", "note": { "ru": "", "en": "" } }
+    ],
+    "streamHours": 3
+  },
+
+  "debut": "2026-11-01T20:00:00+03:00",
+
+  "texts": {
+    "ru": {
+      "title": "ZAREN_01 — сигнал из 5629 года",
+      "statusLive": "В ЭФИРЕ",
+      "statusWatch": "смотреть →",
+      "statusWait": "СИГНАЛ ОЖИДАЕТСЯ",
+      "statusNext": "ближайший сеанс:",
+      "avatarLabel": "Зарен, пиксельный аватар",
+      "about": "Человек из 5629 года. Застрял на Земле, выходит на связь через старый ЭЛТ-монитор и ведёт эфиры для наблюдателей. Бортовой ИИ Архангел следит, чтобы он не болтал лишнего.",
+      "linksTitle": "// КАНАЛЫ СВЯЗИ",
+      "scheduleTitle": "// РАСПИСАНИЕ СЕАНСОВ",
+      "timerDebut": "ДО ДЕБЮТА",
+      "timerNext": "ДО СЛЕДУЮЩЕГО СЕАНСА",
+      "timerLive": "СЕАНС ИДЁТ ПРЯМО СЕЙЧАС",
+      "home": "МСК",
+      "yours": "у вас",
+      "tzNote": "Время пересчитано в ваш часовой пояс",
+      "days": ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"],
+      "daysShort": ["пн", "вт", "ср", "чт", "пт", "сб", "вс"],
+      "units": ["д", "ч", "м", "с"],
+      "collab": "Сотрудничество:",
+      "copy": "скопировать",
+      "copied": "скопировано ✓",
+      "source": "исходники",
+      "terminalHint": "нажмите",
+      "langLabel": "Язык"
+    },
+    "en": {
+      "title": "ZAREN_01 — a signal from the year 5629",
+      "statusLive": "LIVE NOW",
+      "statusWatch": "watch →",
+      "statusWait": "AWAITING SIGNAL",
+      "statusNext": "next session:",
+      "avatarLabel": "Zaren, pixel avatar",
+      "about": "A man from the year 5629. Stranded on Earth, he transmits through an old CRT monitor and streams for the observers. The ship's AI, Archangel, makes sure he doesn't say too much.",
+      "linksTitle": "// COMMS CHANNELS",
+      "scheduleTitle": "// TRANSMISSION SCHEDULE",
+      "timerDebut": "UNTIL DEBUT",
+      "timerNext": "UNTIL NEXT SESSION",
+      "timerLive": "SESSION IS LIVE RIGHT NOW",
+      "home": "MSK",
+      "yours": "your time",
+      "tzNote": "Times converted to your time zone",
+      "days": ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+      "daysShort": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      "units": ["d", "h", "m", "s"],
+      "collab": "Business inquiries:",
+      "copy": "copy",
+      "copied": "copied ✓",
+      "source": "source code",
+      "terminalHint": "press",
+      "langLabel": "Language"
+    }
+  }
+}

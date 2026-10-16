@@ -1,0 +1,8 @@
+Шрифты в этой папке распространяются по лицензии SIL Open Font License 1.1:
+https://openfontlicense.org/open-font-license-official-text/
+
+Pixelify Sans — Copyright 2021 The Pixelify Sans Project Authors (https://github.com/eifetx/Pixelify-Sans)
+VT323 — Copyright 2011 The VT323 Project Authors (peter.hull@oikoi.com)
+
+Файлы скачаны с Google Fonts (подмножества: латиница и кириллица) и лежат здесь,
+чтобы сайт не обращался к сторонним серверам.
