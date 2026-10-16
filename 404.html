@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>СИГНАЛ ПОТЕРЯН — ZAREN_01</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0d0a">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<!-- пути от корня сайта: страница 404 открывается по любому неверному адресу -->
+<link rel="stylesheet" href="/css/style.css">
+<style>
+  .lost { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 14px; }
+  .lost .code { font: 110px/1 var(--font-osd); color: var(--err); text-shadow: 0 0 18px rgba(255,77,77,.6); }
+  .lost .osd { font: 42px/1 var(--font-osd); letter-spacing: 3px; padding: 4px 18px 8px; border: 4px solid currentColor; text-shadow: var(--glow); animation: blink 1.2s steps(1) infinite; }
+  .lost p { margin: 0; color: var(--dim); }
+  .lost a { display: inline-block; margin-top: 10px; padding: 12px 18px; min-height: 48px; color: var(--bg); background: var(--fg); border-radius: 10px; text-decoration: none; font-size: 20px; }
+</style>
+</head>
+<body>
+<div class="crt" aria-hidden="true"></div>
+<main class="lost page">
+  <div class="code">404</div>
+  <div class="osd">NO SIGNAL</div>
+  <p>СИГНАЛ ПОТЕРЯН. Такой частоты не существует.<br><span lang="en">Signal lost. This frequency does not exist.</span></p>
+  <p>АРХАНГЕЛ: Возвращаю вас на основной канал.</p>
+  <a href="/">← на главную / home</a>
+</main>
+</body>
+</html>
