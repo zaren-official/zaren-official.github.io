@@ -23,11 +23,24 @@ const Z = window.Z = {
   reducedMotion: matchMedia('(prefers-reduced-motion: reduce)').matches,
 };
 
-/* ---------- Язык ---------- */
+/* ---------- Язык ----------
+   1) если посетитель уже нажимал RU/EN — его выбор;
+   2) язык устройства: русский (и языки стран, где русский — общий: белорусский, казахский и т.д.) → RU;
+   3) устройство на английском, но часовой пояс России/СНГ → RU (многие ставят телефон на английский);
+   4) иначе — EN. По IP не определяем: это запрос к стороннему сервису, а сайт без трекеров. */
+const RU_LANGS = /^(ru|be|kk|ky|uz|tg|hy|az)\b/i;
+const RU_ZONES = /^(Europe\/(Moscow|Kaliningrad|Samara|Volgograd|Kirov|Ulyanovsk|Astrakhan|Saratov|Simferopol|Minsk)|Asia\/(Yekaterinburg|Omsk|Novosibirsk|Barnaul|Tomsk|Novokuznetsk|Krasnoyarsk|Irkutsk|Chita|Yakutsk|Khandyga|Vladivostok|Ust-Nera|Magadan|Sakhalin|Srednekolymsk|Kamchatka|Anadyr|Almaty|Qostanay|Aqtobe|Aqtau|Atyrau|Oral|Qyzylorda|Bishkek|Tashkent|Samarkand|Dushanbe|Yerevan|Baku))$/;
 function pickLang() {
   const saved = Z.store.get('zaren-lang');
   if (saved === 'ru' || saved === 'en') return saved;
-  return /^(ru|uk|be|kk)/i.test(navigator.language || '') ? 'ru' : 'en';
+  const langs = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).map(String);
+  if (RU_LANGS.test(langs[0])) return 'ru';
+  if (/^en\b/i.test(langs[0]) || !langs[0]) {
+    let tz = '';
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) { /* старый браузер */ }
+    if (RU_ZONES.test(tz) || langs.some(l => RU_LANGS.test(l))) return 'ru';
+  }
+  return 'en';
 }
 function setLang(lang) {
   Z.lang = lang;
