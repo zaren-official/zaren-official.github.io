@@ -44,16 +44,17 @@
   ],
 
   "schedule": {
-    "_help": "day: 1 — понедельник … 7 — воскресенье. time — по homeTimezone (МСК). note — подпись (можно пустую).",
-    "streams": [
+    "_help": "day: 1 — понедельник … 7 — воскресенье. time — по homeTimezone (МСК). note — подпись (можно пустую). Пустой список — «ближайший сеанс: неизвестно».",
+    "_example": [
       { "day": 1, "time": "20:00", "note": { "ru": "", "en": "" } },
-      { "day": 3, "time": "20:00", "note": { "ru": "", "en": "" } },
       { "day": 5, "time": "20:00", "note": { "ru": "", "en": "" } }
     ],
+    "streams": [],
     "streamHours": 3
   },
 
-  "debut": "2026-11-01T20:00:00+03:00",
+  "_debut_help": "Дата дебюта, например \"2026-11-01T20:00:00+03:00\". Пустая строка — дата неизвестна.",
+  "debut": "",
 
   "texts": {
     "ru": {
@@ -70,6 +71,9 @@
       "timerNext": "ДО СЛЕДУЮЩЕГО СЕАНСА",
       "timerLive": "СЕАНС ИДЁТ ПРЯМО СЕЙЧАС",
       "timerWindow": "СЕАНС ПО РАСПИСАНИЮ — СЕЙЧАС",
+      "timerUnknown": "БЛИЖАЙШИЙ СЕАНС",
+      "nextUnknown": "неизвестно",
+      "scheduleTbd": "Расписание уточняется. Следите за каналом связи.",
       "home": "МСК",
       "yours": "у вас",
       "tzNote": "Время пересчитано в ваш часовой пояс",
@@ -97,6 +101,9 @@
       "timerNext": "UNTIL NEXT SESSION",
       "timerLive": "SESSION IS LIVE RIGHT NOW",
       "timerWindow": "SESSION SCHEDULED — NOW",
+      "timerUnknown": "NEXT SESSION",
+      "nextUnknown": "unknown",
+      "scheduleTbd": "Schedule to be announced. Stay tuned.",
       "home": "MSK",
       "yours": "your time",
       "tzNote": "Times converted to your time zone",

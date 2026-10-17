@@ -192,3 +192,6 @@ body.echo-storm::after { content: ""; position: fixed; inset: 0; z-index: 45; po
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* расписание ещё не объявлено */
+.sched .tbd { padding: 12px 4px; color: var(--dim); text-align: center; }

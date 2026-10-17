@@ -77,6 +77,12 @@
     const occ = occurrences(), byStream = new Map(occ.map(o => [o.s, o]));
     const rows = [...(S.streams || [])].sort((a, b) => a.day - b.day || String(a.time).localeCompare(String(b.time)));
     const tbl = Z.$('#sched'); tbl.textContent = '';
+    // расписания нет — одна строка «расписание уточняется»
+    if (!rows.length) {
+      const tr = document.createElement('tr'), td = document.createElement('td');
+      td.className = 'tbd'; td.textContent = Z.t('scheduleTbd'); tr.appendChild(td); tbl.appendChild(tr);
+      Z.$('#tz').hidden = true; return;
+    }
     for (const s of rows) {
       const tr = document.createElement('tr'), o = byStream.get(s);
       const th = document.createElement('th'); th.scope = 'row'; th.textContent = Z.t('days')[s.day - 1] || '?';
@@ -95,8 +101,14 @@
     const box = Z.$('#timer');
     if ((Z.cfg.blocks || {}).timer === false) { box.hidden = true; return; }
     const st = state(), now = Date.now(), L = Z.live || {};
-    if (st.kind === 'none' && !L.live) { box.hidden = true; return; }
     box.hidden = false;
+    // ни даты дебюта, ни расписания — «БЛИЖАЙШИЙ СЕАНС: НЕИЗВЕСТНО»
+    if (st.kind === 'none' && !L.live) {
+      box.classList.add('live');
+      box.innerHTML = '<small></small><b></b>';
+      box.firstChild.textContent = Z.t('timerUnknown'); box.lastChild.textContent = Z.t('nextUnknown').toUpperCase();
+      return;
+    }
     // стрим точно идёт (узнал live.js) — или по расписанию должен идти, а проверить не удалось
     const text = L.live ? Z.t('timerLive') : (st.kind === 'window' && !(L.checked && st.nextAt)) ? Z.t('timerWindow') : '';
     box.classList.toggle('live', !!text);
@@ -119,18 +131,16 @@
     el.className = 'status wait';
     const st = state();
     el.textContent = Z.t('statusWait');
-    if (st.kind === 'debut' || st.kind === 'next' || st.kind === 'window') {
-      const n = document.createElement('span'); n.className = 'next';
-      n.textContent = `${Z.t('statusNext')} ${localWhen(st.at)}`;
-      el.appendChild(n);
-    }
+    const n = document.createElement('span'); n.className = 'next';
+    n.textContent = `${Z.t('statusNext')} ${st.kind === 'none' ? Z.t('nextUnknown') : localWhen(st.at)}`;
+    el.appendChild(n);
   };
 
   // для терминала: «пт, 20:00» ближайшего сеанса (или дебюта)
   function nextText() {
     const st = state();
     const at = st.kind === 'window' ? (Z.live && Z.live.checked && !Z.live.live ? st.nextAt : st.at) : st.at;
-    return at ? localWhen(at) : '—';
+    return at ? localWhen(at) : Z.t('nextUnknown');
   }
   Z.schedule = { state, occurrences, nextText };
 
